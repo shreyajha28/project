@@ -1,0 +1,142 @@
+#include <stdio.h>
+#include<conio.h>
+int main() {
+ int i,j,temp,moves,k,l;
+ int array2[4][4]={{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,32}};
+ char Name[100],control;
+  fgets(Name,100,stdin);
+  printf("%s",Name);
+ getch();
+ clrscr;
+ printf("\t\t\t\tPUZZEL GAME);
+ printf("\n\n\n\t\t\tRULE OF THIS GAME IS");
+ printf("\n\n");
+ printf("1.You can move only 1 step at a time by arrow key\n");
+ printf("\t\tMove up    : by up arrow key\n");
+ printf("\t\tMove down  : by down arrow key\n");
+ printf("\t\tMove right : by right arrow key\n");
+ printf("\t\tMove left  : by left arrow key\n");
+ printf("2.You can move number at empty position only\n");
+ printf("\n\n");
+ printf("3.For each valid move:your total number of moves will be decreased by 1");
+ printf("\n4.Winning Situation:Number in 4*4 Matirx should be in order from 1 to 15");
+ printf("\n\n\tWinning Situation:\n");
+ printf("---------------------\n");
+  for(k=0;k<4;k++)  
+    {
+ for(l=0;l<4;l++)       
+ {
+printf("|  ");     
+ if(k==3&&l==3)    
+     printf("%c ",array2[k][l]);
+     else
+   printf("%d ",array2[k][l]);
+ }
+ printf("|");
+ printf("\n");
+ }
+printf("---------------------\n");    
+ printf("\n\n");
+ printf("5.You can exit the game at any time by pressing 'E' or 'e'\n");
+ printf("So try to win in minimum number of moves");
+ printf("\n\n\t\tHappy Gaming,Good Luck");
+ printf("\n\nEnter any key to start...");
+ getch();
+ clrscr();
+ control='Y';
+while(control=='Y')
+{
+ clrscr();
+ int array1[4][4]={{2,3,4,8},{1,6,7,11},{5,9,10,12},{13,14,15,32}};
+ i=3,j=3,moves=12;
+ while(moves>0)   
+ {
+clrscr();
+printf("\n\nHello %s,Moves remaining :%d \n",Name,moves);
+printf("---------------------\n");
+for(k=0;k<4;k++)     
+{
+for(l=0;l<4;l++)
+{
+printf("|  ");     
+ if(k==i&&l==j)    
+     printf("%c ",array1[k][l]);
+     else
+   printf("%d ",array1[k][l]);
+ }
+ printf("|");
+ printf("\n");
+ }
+printf("---------------------\n");    
+ printf("\n");
+ scanf("%c",&control);
+  switch(control)   
+  {
+ case 37:
+ temp=array1[i][j];
+ array1[i][j]=array1[i][j+1];
+ array1[i][j+1]=temp;    
+      moves--;
+      j++;
+      break;
+      
+ case 39:
+ temp=array1[i][j];
+ array1[i][j]=array1[i][j-1];
+ array1[i][j-1]=temp;    
+      moves--;
+      j--;
+      break;
+      
+ case 38:
+ temp=array1[i][j];
+ array1[i][j]=array1[i+1][j];
+ array1[i+1][j]=temp;    
+      moves--;
+      i++;
+      break;     
+      
+  case 40:
+ temp=array1[i][j];
+ array1[i][j]=array1[i-1][j];
+ array1[i-1][j]=temp;    
+      moves--;
+      i--;
+      break;   
+case 69:
+break;
+case 101: 
+break;
+  }
+if(s==69||s==101)   
+{
+clrscr();
+printf("You have exit the game\n");  
+exit(0);
+}
+}
+for(k=0;k<4;k++)     
+{
+for(l=0;l<4;l++)
+{
+if(array1[k][l]!=array2[k][l])
+{
+ temp=-1;
+ break;   
+}
+ }
+ if(temp==-1)    
+ break;
+}
+clrscr();
+if(temp==-1)    
+    printf("\n\tYou lose\n\n");
+    else
+printf("\n\tYou win\n");
+printf("Press 'Y' if want to play again otherwise press 'N'\n");
+scanf("%c",&control); 
+ }   
+printf("You have exit the game\n"); 
+exit(0);
+  return 0;
+}
